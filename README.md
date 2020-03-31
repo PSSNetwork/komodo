@@ -144,20 +144,27 @@ addnode=91.231.187.19
 addnode=91.231.187.21
 addnode=91.231.187.11
 ```
-### Create your own Blockchain based on Komodo
 
-Komodo allows anyone to create a runtime fork which represents an independent Blockchain. Below are the detailed instructions:
-Setup two independent servers with at least 1 server having a static IP and build komodod on those servers.  
+### Connect to PSS blockchain
+### Command to run PSS blockchain and connect with the network:
 
-#### On server 1 (with static IP) run:
-```shell
-./komodod -ac_name=name_of_your_chain -ac_supply=100000 -bind=ip_of_server_1 &
-```
+./komodod -ac_name=PSS -ac_supply=20000000 -ac_sapling=1 -ac_reward=12000000000 -ac_staked=50 -ac_halving=525600 -ac_decay=65000000 -ac_cbmaturity=6 -ac_adaptivepow=1 -ac_cc=102 -ac_blocktime=150 -ac_public=1 -addnode=91.231.187.19 &
 
-#### On server 2 run:
-```shell
-./komodod -ac_name=name_of_your_chain -ac_supply=100000 -addnode=ip_of_server_1 -gen &
-```
+
+Wallet commands:
+# Get (transparent) wallet and blockchain info
+./komodo-cli -ac_name=PSS getinfo
+
+
+# Get (transparent) wallet information
+./komodo-cli -ac_name=PSS getwalletinfo
+# Get mining information
+./komodo-cli -ac_name=PSS getmininginfo
+# Generate a new address
+./komodo-cli -ac_name=PSS getnewaddress
+
+# Example:
+komodo-cli -ac_name=PSS senfrom "" address
 
 **Komodo is based on Zcash which is unfinished and highly experimental.** Use at your own risk.
 
